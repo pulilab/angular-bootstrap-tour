@@ -52,9 +52,9 @@
 
             return $http.get(templateUrl, {
                 cache: $templateCache
-            }).success(function (template) {
-                if (template) {
-                    return compileTemplate(template, scope);
+            }).then(function (res) {
+                if (res.data) {
+                    return compileTemplate(res.data, scope);
                 }
                 return '';
             });
